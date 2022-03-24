@@ -1,0 +1,29 @@
+#home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#soal1{
+  display:none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.formContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button, input{
+  margin: 5%;
+}
+
+.soal input{
+  margin: 1%;
+}
