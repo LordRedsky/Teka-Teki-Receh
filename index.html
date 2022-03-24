@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
   <title>Teka-teki Receh</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="index.js" defer></script>
 </head>
+
 <body>
   <div id="home">
     <h1>Teka-Teki Receh</h1>
@@ -18,16 +21,21 @@
       </div>
     </div>
   </div>
-
   <div id="soal1" class="soal">
-    <h1 class="pertanyaan">Belajar bahasa Mandarin, lantai basah artinya apa?</h1>
-    <input id="jawaban1" type="text">
+    <h1 id="tekaTeki">Belajar bahasa Mandarin, lantai basah artinya apa?</h1>
+    <div>
+      <textarea class="full" id="jawaban1"></textarea>
+    </div>
+    <!-- <input id="jawaban1" type="text"> -->
+    <div>
+      <button id="submit">Submit</button>
+    </div>
+    <div>
       <div>
-        <button >Submit</button>
+        <button id="next">next</button>
       </div>
-      <div>
-        <button onclick="clickFunc('soal1', 'home')">Nyerah!</button>
-      </div>
+      <button onclick="clickFunc('soal1', 'home')">Nyerah!</button>
+    </div>
   </div>
   <script>
     function clickFunc(origin, destination) {
@@ -36,4 +44,5 @@
     }
   </script>
 </body>
+
 </html>

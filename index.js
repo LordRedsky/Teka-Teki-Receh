@@ -43,13 +43,36 @@ function questionsAndAnswer() {
     ]
 
     const acak = Math.floor(Math.random() * quiz.length)
-    // console.log(acak);
-    const question = quiz[acak].question
-    console.log(question);
+    const soal = quiz[acak]
+    const questionElement = document.getElementById('tekaTeki')
 
-    // const questionElement = document.getElementById('question')
+    questionElement.innerHTML = soal.question
+
+    return soal;
 }
 
-questionsAndAnswer()
+const question = questionsAndAnswer()
+// console.log(question.value);
+const answerElement = document.getElementById('jawaban1')
+const cek = document.getElementById('submit')
 
-// console.log(questionsAndAnswer());
+cek.addEventListener('click', function () {
+    console.log(answerElement.value.toLowerCase());
+    console.log(question.answer.toLowerCase());
+    let result = '' // true or false
+
+    if (answerElement.value.toLowerCase() === question.answer.toLowerCase()) {
+        result = 'benar';
+    } else {
+        result = 'salah'
+    }
+    console.log(result);
+    answerElement.value = '' // reset text area
+    // return result
+})
+
+const pertanyaanBaru = document.getElementById('next')
+
+pertanyaanBaru.addEventListener('click', function () {
+    question = questionsAndAnswer()
+})
