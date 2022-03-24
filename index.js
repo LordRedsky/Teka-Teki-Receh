@@ -104,8 +104,7 @@ function cekJawaban() {
         let perJawaban = perSoal.answer
         let jawabanUser = document.getElementById(`jawaban${i+1}`).value
         if (jawabanUser.toLowerCase() === perJawaban.toLowerCase()) {
-
-            score += 100
+            score += 10
         }
     }
     return score
@@ -134,7 +133,6 @@ function leaderboardRender() {
             }
         }
     }
-    console.log(scoreArray);
 
     for (let i = 0; i < nameArray.length; i++) {
         let Name = nameArray[i]
