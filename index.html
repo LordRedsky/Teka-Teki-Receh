@@ -12,7 +12,7 @@
     <h1>Teka-Teki Receh</h1>
     <div class="formContainer">
       <label for="input">Masukan nama anda!</label>
-      <input type="text">
+      <input type="text" id="nama">
       <div>
         <button onclick="clickFunc('home', 'soal1')">Mulai</button>
       </div>
@@ -22,9 +22,9 @@
   <div id="leaderboard">
     <h1>Leaderboard</h1>
     <h2>Score anda:</h2>
-    <h3>100</h3>
+    <h3 id="currentScore">100</h3>
     <div class="leaderboardContainer">
-      <div class="name">Nama</div><div class="score">Score</div>
+      <div class="name"></div><div class="score"></div>
     </div>
     <div>
       <button onclick="clickFunc('leaderboard', 'home')">Main lagi</button>
