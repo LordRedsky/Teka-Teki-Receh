@@ -118,11 +118,12 @@ function leaderboardRender() {
     let nameArray = localStorage.Name.split(",")
     let scoreArray = localStorage.Score.split(",")
 
+    
     let temp;
     let temp2;
     for (let i = 0; i < nameArray.length; i++) {
         for (let j = 0; j < nameArray.length; j++) {
-            if (scoreArray[j] < scoreArray[j + 1]) {
+            if (Number(scoreArray[j]) < Number(scoreArray[j + 1])) {
                 temp = scoreArray[j]
                 scoreArray[j] = scoreArray[j + 1]
                 scoreArray[j + 1] = temp
@@ -133,6 +134,7 @@ function leaderboardRender() {
             }
         }
     }
+
 
     for (let i = 0; i < nameArray.length; i++) {
         let Name = nameArray[i]
