@@ -48,6 +48,10 @@ function questionsAndAnswer() {
     console.log(question);
 
     // const questionElement = document.getElementById('question')
+
+    for (let i=0;i<quiz.length;i++){
+        document.getElementById(`pertanyaan${i+1}`).innerText = quiz[i].question
+    }
 }
 
 questionsAndAnswer()
