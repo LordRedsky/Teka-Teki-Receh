@@ -8,8 +8,8 @@ const quiz = [
         answer: `Gula aren't`
     },
     {
-        question: `Kenapa zombie kalau nyerang barengan ?`,
-        answer: `Karena kalau sendri zomblo`
+        question: `Gang apa yang selalu bikin ibu-ibu kesel ?`,
+        answer: `Gang-guin suaminya`
     },
     {
         question: `Pemain bola mana yang beratnya 3kg ?`,
@@ -20,16 +20,16 @@ const quiz = [
         answer: `Bebek dikunci stang`
     },
     {
-        question: `Hewan apa yang paling panjang ?`,
-        answer: `Ular antri minyak goreng`
+        question: `Siapa presiden yang imut ?`,
+        answer: `Kim Jong Unch`
     },
     {
-        question: `Kenapa anak Babi kalau jalan nunduk-nunduk ?`,
-        answer: `Karena malu ibunya Babi`
+        question: `Penyanyi luar negeri yang suka sepedaan ?`,
+        answer: `Selena Gowes`
     },
     {
         question: `Buah apa yang nggak punya otak ?`,
-        answer: `semuanya`
+        answer: `Semuanya`
     },
     {
         question: `Gajah apa yang belalainya pendek?`,
@@ -42,7 +42,6 @@ const quiz = [
 ]
 
 function questionsAndAnswer() {
-
     for (let i=0;i<quiz.length;i++){
         document.getElementById(`pertanyaan${i+1}`).innerText = quiz[i].question
     }
@@ -54,10 +53,31 @@ questionsAndAnswer()
 let nama;
 let listScoreLeaderboard = []
 let listNameLeaderboard = []
+
+if (localStorage.length !== 0) {
+    listNameLeaderboard = localStorage.Name.split(",")
+    listScoreLeaderboard = localStorage.Score.split(",")
+}
+
 function clickFunc(origin, destination) {
     document.getElementById(`${origin}`).style.display = 'none'
     document.getElementById(`${destination}`).style.display = 'flex'
     nama = document.getElementById('nama').value
+    if(origin === 'home' && !nama){
+        document.getElementById(`${origin}`).style.display = 'flex'
+        document.getElementById(`${destination}`).style.display = 'none'
+        if (!name){
+            alert("nama tidak boleh kosong")
+        }
+    } else if (origin === 'home' && nama.length>8){
+        document.getElementById(`${origin}`).style.display = 'flex'
+        document.getElementById(`${destination}`).style.display = 'none'
+        if (!name){
+            alert("nama terlalu panjang")
+        }
+    }
+
+
     if (destination === 'home'){
         document.getElementById('nama').value = ''
         for (let i = 1;i<=10;i++){
@@ -74,7 +94,6 @@ function clickFunc(origin, destination) {
         document.querySelector('.score').innerHTML = ''
         leaderboardRender()
     }
-    
     
 }
 
@@ -127,8 +146,12 @@ function leaderboardRender() {
         let nilai = document.createElement('h2')
         nilai.innerHTML = Score
         scoreParent.appendChild(nilai)
-        if (i === 4){
+        if (i === 3){
             break
         }
     }
 }
+
+if (localStorage.length !== 0) {
+    leaderboardRender()
+} 
