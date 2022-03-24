@@ -104,7 +104,8 @@ function cekJawaban() {
         let perJawaban = perSoal.answer
         let jawabanUser = document.getElementById(`jawaban${i+1}`).value
         if (jawabanUser.toLowerCase() === perJawaban.toLowerCase()) {
-            score++
+
+            score += 100
         }
     }
     return score
