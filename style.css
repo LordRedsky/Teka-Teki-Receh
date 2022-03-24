@@ -6,7 +6,17 @@
   height: 100vh;
 }
 
-#soal1{
+#soal1, 
+#soal2, 
+#soal3, 
+#soal4,
+#soal5,
+#soal6,
+#soal7,
+#soal8,
+#soal9,
+#soal10,
+#leaderboard{
   display:none;
   flex-direction: column;
   justify-content: center;
@@ -26,4 +36,15 @@ button, input{
 
 .soal input{
   margin: 1%;
+}
+
+.leaderboardContainer{
+  display: flex;
+  border: 1px dotted gray;
+  width: 20%;
+  justify-content: center;
+}
+
+.name, .score{
+  margin: 5%;
 }
