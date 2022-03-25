@@ -184,3 +184,7 @@ h3{
   font-size: 50px;
   margin: 0;
 }
+
+input{
+  text-align: center;
+}
