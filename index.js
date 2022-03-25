@@ -128,6 +128,7 @@ function clickFunc(origin, destination) {
         document.getElementById('nama').value = ''
         for (let i = 1; i <= 10; i++) {
             document.getElementById(`jawaban${i}`).value = ''
+            document.getElementById(`jawaban${i}`).placeholder = ''
         }
         counter = 3
     }
