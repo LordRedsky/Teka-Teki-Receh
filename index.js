@@ -1,48 +1,48 @@
 const quiz = [{
-        question: `Istri istri apa yang kecil ?`,
-        answer: `microwife`
-    },
-    {
-        question: `Gula gula apa yang bukan gula ?`,
-        answer: `Gula aren't`
-    },
-    {
-        question: `Gang apa yang selalu bikin ibu-ibu kesel ?`,
-        answer: `Gang-guin suaminya`
-    },
-    {
-        question: `Pemain bola mana yang beratnya 3kg ?`,
-        answer: `Bambang Tabung Gas`
-    },
-    {
-        question: `Bebek bebek apa yang jalannya mutar ke kiri terus ?`,
-        answer: `Bebek dikunci stang`
-    },
-    {
-        question: `Siapa presiden yang imut ?`,
-        answer: `Kim Jong Unch`
-    },
-    {
-        question: `Penyanyi luar negeri yang suka sepedaan ?`,
-        answer: `Selena Gowes`
-    },
-    {
-        question: `Buah apa yang nggak punya otak ?`,
-        answer: `Semuanya`
-    },
-    {
-        question: `Gajah apa yang belalainya pendek?`,
-        answer: `Gajah Pesek`
-    },
-    {
-        question: `Sayur apa yang muncul di akhir film?`,
-        answer: `Tomat`
-    }
+    question: `Istri istri apa yang kecil ?`,
+    answer: `microwife`
+},
+{
+    question: `Gula gula apa yang bukan gula ?`,
+    answer: `Gula aren't`
+},
+{
+    question: `Gang apa yang selalu bikin ibu-ibu kesel ?`,
+    answer: `Gang-guin suaminya`
+},
+{
+    question: `Pemain bola mana yang beratnya 3kg ?`,
+    answer: `Bambang Tabung Gas`
+},
+{
+    question: `Bebek bebek apa yang jalannya mutar ke kiri terus ?`,
+    answer: `Bebek dikunci stang`
+},
+{
+    question: `Siapa presiden yang imut ?`,
+    answer: `Kim Jong Unch`
+},
+{
+    question: `Penyanyi luar negeri yang suka sepedaan ?`,
+    answer: `Selena Gowes`
+},
+{
+    question: `Buah apa yang nggak punya otak ?`,
+    answer: `Semuanya`
+},
+{
+    question: `Gajah apa yang belalainya pendek?`,
+    answer: `Gajah Pesek`
+},
+{
+    question: `Sayur apa yang muncul di akhir film?`,
+    answer: `Tomat`
+}
 ]
 
 function questionsAndAnswer() {
     for (let i = 0; i < quiz.length; i++) {
-        document.getElementById(`pertanyaan${i+1}`).innerText = quiz[i].question
+        document.getElementById(`pertanyaan${i + 1}`).innerText = quiz[i].question
     }
 }
 
@@ -77,13 +77,14 @@ function clickFunc(origin, destination) {
         document.getElementById(`${origin}`).style.display = 'flex'
         document.getElementById(`${destination}`).style.display = 'none'
         if (!name) {
-            alert("Nama tidak boleh kosong!!!")
+            swal.fire("Nama tidak boleh kosong!!!")
         }
+        // swal.fire(`Lets Go ${nama}`)
     } else if (origin === 'home' && nama.length > 8) {
         document.getElementById(`${origin}`).style.display = 'flex'
         document.getElementById(`${destination}`).style.display = 'none'
         if (!name) {
-            alert("Nama terlalu panjang!!!")
+            swal.fire("Nama terlalu panjang!!!")
         }
     }
 
@@ -113,7 +114,7 @@ function cekJawaban() {
     for (let i = 0; i < quiz.length; i++) {
         let perSoal = quiz[i]
         let perJawaban = perSoal.answer
-        let jawabanUser = document.getElementById(`jawaban${i+1}`).value
+        let jawabanUser = document.getElementById(`jawaban${i + 1}`).value
         if (jawabanUser.toLowerCase() === perJawaban.toLowerCase()) {
             score += 10
         }
@@ -129,7 +130,7 @@ function leaderboardRender() {
     let nameArray = localStorage.Name.split(",")
     let scoreArray = localStorage.Score.split(",")
 
-    
+
     let temp;
     let temp2;
     for (let i = 0; i < nameArray.length; i++) {
