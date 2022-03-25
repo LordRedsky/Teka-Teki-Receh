@@ -59,8 +59,19 @@ if (localStorage.length !== 0) {
 }
 
 function clickFunc(origin, destination) {
-    document.getElementById(`${origin}`).style.display = 'none'
-    document.getElementById(`${destination}`).style.display = 'flex'
+    document.querySelector(`.inputJawaban`).placeholder = ''
+    if(destination === 'nyerah'){
+        let lokasi = ''
+        for (let i = 0;i<origin.length;i++){
+            if (!isNaN(Number(origin[i]))){
+                lokasi += origin[i]
+            }
+        }
+        document.querySelector(`#jawaban${lokasi}`).placeholder = quiz[Number(lokasi)-1].answer
+    } else {
+        document.getElementById(`${origin}`).style.display = 'none'
+        document.getElementById(`${destination}`).style.display = 'flex'
+    }
     nama = document.getElementById('nama').value
     if (origin === 'home' && !nama) {
         document.getElementById(`${origin}`).style.display = 'flex'
