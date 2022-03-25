@@ -1,43 +1,43 @@
 const quiz = [{
-    question: `Istri istri apa yang kecil ?`,
-    answer: `microwife`
-},
-{
-    question: `Gula gula apa yang bukan gula ?`,
-    answer: `Gula aren't`
-},
-{
-    question: `Gang apa yang selalu bikin ibu-ibu kesel ?`,
-    answer: `Gang-guin suaminya`
-},
-{
-    question: `Pemain bola mana yang beratnya 3kg ?`,
-    answer: `Bambang Tabung Gas`
-},
-{
-    question: `Bebek bebek apa yang jalannya mutar ke kiri terus ?`,
-    answer: `Bebek dikunci stang`
-},
-{
-    question: `Siapa presiden yang imut ?`,
-    answer: `Kim Jong Unch`
-},
-{
-    question: `Penyanyi luar negeri yang suka sepedaan ?`,
-    answer: `Selena Gowes`
-},
-{
-    question: `Buah apa yang nggak punya otak ?`,
-    answer: `Semuanya`
-},
-{
-    question: `Gajah apa yang belalainya pendek?`,
-    answer: `Gajah Pesek`
-},
-{
-    question: `Sayur apa yang muncul di akhir film?`,
-    answer: `Tomat`
-}
+        question: `Istri istri apa yang kecil ?`,
+        answer: `microwife`
+    },
+    {
+        question: `Gula gula apa yang bukan gula ?`,
+        answer: `Gula aren't`
+    },
+    {
+        question: `Gang apa yang selalu bikin ibu-ibu kesel ?`,
+        answer: `Gang-guin suaminya`
+    },
+    {
+        question: `Pemain bola mana yang beratnya 3kg ?`,
+        answer: `Bambang Tabung Gas`
+    },
+    {
+        question: `Bebek bebek apa yang jalannya mutar ke kiri terus ?`,
+        answer: `Bebek dikunci stang`
+    },
+    {
+        question: `Siapa presiden yang imut ?`,
+        answer: `Kim Jong Unch`
+    },
+    {
+        question: `Penyanyi luar negeri yang suka sepedaan ?`,
+        answer: `Selena Gowes`
+    },
+    {
+        question: `Buah apa yang nggak punya otak ?`,
+        answer: `Semuanya`
+    },
+    {
+        question: `Gajah apa yang belalainya pendek?`,
+        answer: `Gajah Pesek`
+    },
+    {
+        question: `Sayur apa yang muncul di akhir film?`,
+        answer: `Tomat`
+    }
 ]
 
 function questionsAndAnswer() {
@@ -58,16 +58,51 @@ if (localStorage.length !== 0) {
     listScoreLeaderboard = localStorage.Score.split(",")
 }
 
+let counter = 3;
+
 function clickFunc(origin, destination) {
     document.querySelector(`.inputJawaban`).placeholder = ''
-    if(destination === 'nyerah'){
+    if (counter === 0 && origin !== 'leaderboard') {
+        destination = 'leaderboard'
+    }
+    let loc = ''
+    for (let i = 0; i < origin.length; i++) {
+        if (!isNaN(Number(origin[i]))) {
+            loc += origin[i]
+        }
+    }
+
+    if (counter !== 0) {
+        if (loc !== '' && destination !== 'nyerah') {
+            let jawaban = document.querySelector(`#jawaban${loc}`).value
+            if (jawaban.toLowerCase() !== quiz[Number(loc) - 1].answer.toLowerCase()) {
+                let heart = ''
+                for (let i = 0; i < counter - 1; i++) {
+                    heart += '❤️'
+                }
+                swal.fire(`Salah! 
+                Nyawa anda: ${heart}💔`)
+                counter--
+                return
+            }
+        }
+    }
+
+    if (destination === 'nyerah') {
         let lokasi = ''
-        for (let i = 0;i<origin.length;i++){
-            if (!isNaN(Number(origin[i]))){
+        for (let i = 0; i < origin.length; i++) {
+            if (!isNaN(Number(origin[i]))) {
                 lokasi += origin[i]
             }
         }
-        document.querySelector(`#jawaban${lokasi}`).placeholder = quiz[Number(lokasi)-1].answer
+        let heart = ''
+        for (let i = 0; i < counter - 1; i++) {
+            heart += '❤️'
+        }
+        swal.fire(`Nyawa anda: ${heart}💔`)
+        counter--
+        document.querySelector(`#jawaban${lokasi}`).value = ''
+        document.querySelector(`#jawaban${lokasi}`).placeholder = quiz[Number(lokasi) - 1].answer
     } else {
         document.getElementById(`${origin}`).style.display = 'none'
         document.getElementById(`${destination}`).style.display = 'flex'
@@ -94,6 +129,7 @@ function clickFunc(origin, destination) {
         for (let i = 1; i <= 10; i++) {
             document.getElementById(`jawaban${i}`).value = ''
         }
+        counter = 3
     }
     if (destination === 'leaderboard') {
         document.getElementById('currentScore').innerText = cekJawaban()
